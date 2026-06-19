@@ -1,0 +1,486 @@
+/* ===========================================================
+   SlaYerBoy — shared stylesheet
+   Fonts: Orbitron (logo / display), Sarabun (Thai body text)
+   =========================================================== */
+
+:root {
+  --pink: #ff1464;
+  --pink-light: #ff5c96;
+  --purple: #4b1d6e;
+  --black: #050505;
+  --off-black: #0d0d10;
+  --white: #ffffff;
+  --grey-line: #e2e2e2;
+  --label-blue: #2e4ea3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Sarabun', sans-serif;
+  background: var(--white);
+  color: var(--black);
+}
+
+a {
+  text-decoration: none;
+}
+
+.brand {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--pink);
+  letter-spacing: 1px;
+  background: linear-gradient(100deg, var(--pink) 30%, var(--pink-light) 60%, var(--purple) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---------- Home header (white) ---------- */
+
+.home-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 22px 48px;
+  background: var(--white);
+  border-bottom: 1px solid var(--grey-line);
+}
+
+.home-header .brand {
+  font-size: 2rem;
+}
+
+.home-header nav {
+  display: flex;
+  gap: 34px;
+  flex-wrap: wrap;
+}
+
+.home-header nav a {
+  color: var(--black);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.2s ease;
+}
+
+.home-header nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--pink);
+  transition: width 0.2s ease;
+}
+
+.home-header nav a:hover,
+.home-header nav a.active {
+  color: var(--pink);
+}
+
+.home-header nav a:hover::after,
+.home-header nav a.active::after {
+  width: 100%;
+}
+
+/* ---------- Sub-page header (black) ---------- */
+
+.sub-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 20px 48px;
+  background: var(--black);
+  border-bottom: 1px solid #1c1c1c;
+}
+
+.sub-header .home-link {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.sub-header .home-link:hover {
+  color: var(--pink-light);
+}
+
+.sub-header .page-title {
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  color: var(--white);
+  text-transform: uppercase;
+}
+
+.sub-header .brand {
+  font-size: 1.5rem;
+}
+
+/* ---------- Hero (home page) ---------- */
+
+.hero {
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  padding: 64px 40px;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  text-align: center;
+  max-width: 480px;
+}
+
+.hero-text h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 3.4rem;
+  color: var(--pink);
+  text-shadow: 0 0 24px rgba(255, 20, 100, 0.45);
+}
+
+.hero-text .tagline {
+  color: var(--white);
+  font-weight: 800;
+  font-size: 1.5rem;
+  margin-top: 22px;
+}
+
+.hero-text .subtext {
+  color: #cfcfcf;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* product stack — css-drawn placeholder tees, no real artwork */
+
+.product-stack {
+  position: relative;
+  width: 220px;
+  height: 260px;
+  flex-shrink: 0;
+}
+
+.tee {
+  position: absolute;
+  width: 150px;
+  height: 170px;
+  background: linear-gradient(160deg, #1a1a1a, #050505);
+  border: 1px solid #2a2a2a;
+  clip-path: polygon(30% 0%, 70% 0%, 100% 18%, 80% 30%, 80% 100%, 20% 100%, 20% 30%, 0% 18%);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+}
+
+.tee::after {
+  content: attr(data-label);
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  color: var(--pink-light);
+  text-align: center;
+  width: 80%;
+}
+
+.product-stack.left .tee:nth-child(1) { top: 0; left: 10px; transform: rotate(-8deg); z-index: 2; }
+.product-stack.left .tee:nth-child(2) { top: 50px; left: 70px; transform: rotate(6deg); z-index: 1; }
+
+.product-stack.right .tee:nth-child(1) { top: 10px; left: 40px; transform: rotate(4deg); }
+
+/* view all button */
+
+.view-all-wrap {
+  text-align: center;
+  padding: 46px 0 60px;
+}
+
+.btn-view-all {
+  display: inline-block;
+  background: var(--black);
+  color: var(--white);
+  padding: 14px 52px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-view-all:hover {
+  background: var(--pink);
+  transform: translateY(-2px);
+}
+
+/* ---------- About page ---------- */
+
+.about-body {
+  background: var(--black);
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 40px;
+}
+
+.about-content {
+  max-width: 760px;
+  text-align: center;
+  color: var(--white);
+}
+
+.about-content h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin-bottom: 30px;
+  letter-spacing: 0.5px;
+}
+
+.about-content h2 span {
+  color: var(--pink);
+  font-style: italic;
+}
+
+.about-content p {
+  line-height: 2;
+  font-size: 1.05rem;
+  color: #e8e8e8;
+}
+
+.about-content strong {
+  color: var(--pink-light);
+}
+
+/* ---------- Shop page ---------- */
+
+.shop-body {
+  padding: 60px 40px 80px;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+  justify-content: center;
+}
+
+.product-card {
+  width: 200px;
+  text-align: center;
+}
+
+.product-placeholder {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #cfcfcf;
+  background:
+    linear-gradient(to top right, transparent calc(50% - 1px), #cfcfcf, transparent calc(50% + 1px)),
+    linear-gradient(to top left, transparent calc(50% - 1px), #cfcfcf, transparent calc(50% + 1px));
+}
+
+.product-card span {
+  display: block;
+  margin-top: 12px;
+  font-style: italic;
+  font-weight: 800;
+  color: var(--label-blue);
+  font-size: 1rem;
+}
+
+/* ---------- News page ---------- */
+
+.news-body {
+  text-align: center;
+  padding: 60px 40px 0;
+}
+
+.news-body p {
+  font-size: 1.1rem;
+  margin: 22px 0;
+  color: #161616;
+}
+
+.news-body p.discount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-size: 1.05rem;
+}
+
+.news-body p.discount .ticket {
+  font-size: 1.4rem;
+}
+
+.news-body strong {
+  font-weight: 800;
+}
+
+.news-body .contact-link {
+  color: var(--pink);
+  transition: color 0.2s ease;
+}
+
+.news-body .contact-link:hover {
+  color: var(--pink-light);
+}
+
+.promo-bar {
+  margin-top: 48px;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 30px 48px;
+}
+
+.promo-bar .promo-side {
+  color: var(--pink-light);
+  font-weight: 700;
+  font-size: 1rem;
+  flex: 1;
+  text-align: center;
+}
+
+.promo-bar .contact-big {
+  font-family: 'Orbitron', sans-serif;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 2.2rem;
+  color: #6688ff;
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.promo-bar .contact-big:hover {
+  color: #99aaff;
+}
+
+/* ---------- Contact page ---------- */
+
+.contact-body {
+  padding: 60px 40px 80px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 60px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.contact-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--white);
+  flex-shrink: 0;
+}
+
+.contact-icon.phone { background: var(--black); }
+.contact-icon.line { background: #06c755; }
+.contact-icon.facebook { background: #1877f2; }
+.contact-icon.instagram {
+  background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
+}
+
+.contact-item span {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.contact-info-box {
+  grid-column: 2;
+  border: 2px solid #d8d8d8;
+  border-radius: 14px;
+  padding: 28px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--black);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 760px) {
+  .home-header, .sub-header {
+    padding: 18px 22px;
+  }
+
+  .hero {
+    padding: 48px 22px;
+  }
+
+  .hero-text h1 {
+    font-size: 2.4rem;
+  }
+
+  .product-stack {
+    display: none;
+  }
+
+  .about-body, .shop-body, .news-body, .contact-body {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info-box {
+    grid-column: 1;
+  }
+
+  .promo-bar {
+    flex-direction: column;
+    text-align: center;
+  }
+}
